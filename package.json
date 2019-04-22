@@ -2,7 +2,7 @@
   "name": "random-quote-machine",
   "version": "0.1.0",
   "description": "random quote machine app in react",
-  "homepage": "https://mrwanashraf.js.org/random-quote-machine",
+  "homepage": "https://mrwanashraf.github.io/random-quote-machine",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
