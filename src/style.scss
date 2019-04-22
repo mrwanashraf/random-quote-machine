@@ -1,0 +1,46 @@
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#quote-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+    background-color: #212121;
+    color: #9CCC65;
+    width: 80vmin;
+    height: 80vmin;
+    padding: 5vmin;
+    box-shadow: -1vmax 1vmax 1vmax black;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#new-quote, #tweet-quote button {
+    border: none;
+    background-color: #9CCC65;
+    color: #212121;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+
+a {
+    text-decoration: none;
+}
