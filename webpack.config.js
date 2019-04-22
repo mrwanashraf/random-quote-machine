@@ -15,6 +15,7 @@ module.exports = {
         contentBase: "./src",
         hot: true
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
