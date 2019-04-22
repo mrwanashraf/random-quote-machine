@@ -7,6 +7,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'app.js'
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     resolve: {
         modules: [path.resolve(__dirname, 'src'), 'node_modules']
     },
