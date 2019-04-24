@@ -13330,10 +13330,14 @@ function (_React$Component) {
   app_createClass(RandomQuoteMachine, [{
     key: "fetchQuotes",
     value: function fetchQuotes() {
+      var _this2 = this;
+
       fetch("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json").then(function (res) {
         return res.json();
       }).then(function (data) {
         localStorage.setItem('data', JSON.stringify(data.quotes));
+
+        _this2.randomQuote();
       })["catch"](function (error) {
         return console.log(error);
       });
