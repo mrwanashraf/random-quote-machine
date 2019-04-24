@@ -13280,6 +13280,10 @@ function (_React$Component) {
 // CONCATENATED MODULE: ./src/app.js
 function app_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { app_typeof = function _typeof(obj) { return typeof obj; }; } else { app_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return app_typeof(obj); }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function app_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function app_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -13341,23 +13345,47 @@ function (_React$Component) {
 
   }, {
     key: "randomQuote",
-    value: function randomQuote() {
-      if (localStorage.getItem('data').length > 0) {
-        var data = JSON.parse(localStorage.getItem('data'));
-        var random = Math.floor(Math.random() * data.length);
-        var quote = data[random].quote;
-        var author = data[random].author;
-        var Hue = Math.floor(Math.random() * 50);
-        var Saturation = Math.floor(Math.random() * 10);
-        var Lightness = Math.floor(Math.random() * 25) + 75;
-        this.setState({
-          quote: quote,
-          author: author
-        }); // change background color randomly
+    value: function () {
+      var _randomQuote = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee() {
+        var data, random, quote, author, Hue, Saturation, Lightness;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return JSON.parse(localStorage.getItem('data'));
 
-        document.body.style.backgroundColor = "hsl(".concat(Hue, ", ").concat(Saturation, "%, ").concat(Lightness, "%)");
+              case 2:
+                data = _context.sent;
+                random = Math.floor(Math.random() * data.length);
+                quote = data[random].quote;
+                author = data[random].author;
+                Hue = Math.floor(Math.random() * 50);
+                Saturation = Math.floor(Math.random() * 10);
+                Lightness = Math.floor(Math.random() * 25) + 75;
+                this.setState({
+                  quote: quote,
+                  author: author
+                }); // change background color randomly
+
+                document.body.style.backgroundColor = "hsl(".concat(Hue, ", ").concat(Saturation, "%, ").concat(Lightness, "%)");
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function randomQuote() {
+        return _randomQuote.apply(this, arguments);
       }
-    }
+
+      return randomQuote;
+    }()
   }, {
     key: "componentWillMount",
     // fetch the quotes when the component will mount
