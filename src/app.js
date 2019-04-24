@@ -27,27 +27,31 @@ class RandomQuoteMachine extends React.Component {
         .then(res => res.json())
         .then(data => {            
             localStorage.setItem('data', JSON.stringify(data.quotes));
+            this.randomQuote();
         })
         .catch((error) => console.log(error));
     }
     
     // randomly generate a quote, set it to the quote, author state then change the background color
+    
     randomQuote() {
-        const data = JSON.parse(localStorage.getItem('data'));
-        const random = Math.floor(Math.random() * data.length);
-        const quote = data[random].quote;
-        const author = data[random].author;
-        const Hue = Math.floor(Math.random() * 50);
-        const Saturation = Math.floor(Math.random() * 10);
-        const Lightness = Math.floor(Math.random() * 25) + 75;
-
-        this.setState({
-            quote,
-            author
-        });
-
-        // change background color randomly
-        document.body.style.backgroundColor = `hsl(${Hue}, ${Saturation}%, ${Lightness}%)`;
+        if ( localStorage.hasOwnProperty('data') ) {
+            const data = JSON.parse(localStorage.getItem('data'));
+            const random = Math.floor(Math.random() * data.length);
+            const quote = data[random].quote;
+            const author = data[random].author;
+            const Hue = Math.floor(Math.random() * 50);
+            const Saturation = Math.floor(Math.random() * 10);
+            const Lightness = Math.floor(Math.random() * 25) + 75;
+    
+            this.setState({
+                quote,
+                author
+            });
+    
+            // change background color randomly
+            document.body.style.backgroundColor = `hsl(${Hue}, ${Saturation}%, ${Lightness}%)`;
+        }
     };
 
     // fetch the quotes when the component will mount
