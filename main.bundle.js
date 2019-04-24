@@ -13342,19 +13342,21 @@ function (_React$Component) {
   }, {
     key: "randomQuote",
     value: function randomQuote() {
-      var data = JSON.parse(localStorage.getItem('data'));
-      var random = Math.floor(Math.random() * data.length);
-      var quote = data[random].quote;
-      var author = data[random].author;
-      var Hue = Math.floor(Math.random() * 50);
-      var Saturation = Math.floor(Math.random() * 10);
-      var Lightness = Math.floor(Math.random() * 25) + 75;
-      this.setState({
-        quote: quote,
-        author: author
-      }); // change background color randomly
+      if (localStorage.getItem('data').length > 0) {
+        var data = JSON.parse(localStorage.getItem('data'));
+        var random = Math.floor(Math.random() * data.length);
+        var quote = data[random].quote;
+        var author = data[random].author;
+        var Hue = Math.floor(Math.random() * 50);
+        var Saturation = Math.floor(Math.random() * 10);
+        var Lightness = Math.floor(Math.random() * 25) + 75;
+        this.setState({
+          quote: quote,
+          author: author
+        }); // change background color randomly
 
-      document.body.style.backgroundColor = "hsl(".concat(Hue, ", ").concat(Saturation, "%, ").concat(Lightness, "%)");
+        document.body.style.backgroundColor = "hsl(".concat(Hue, ", ").concat(Saturation, "%, ").concat(Lightness, "%)");
+      }
     }
   }, {
     key: "componentWillMount",
